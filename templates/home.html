@@ -1,5 +1,45 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+</head>
+<body>
+	<div class="header">
+		<h1>меню __</h1>
+	</div>
 
-{% block content %}
-<h1>LJ</h1>
-{% endblock content %}
+	<div class="lsaiber">
+		<p><a href="">link</a></p>
+		<p><a href="">link</a></p>
+		<p><a href="">kink</a></p>
+		<p><a href="">link</a></p>
+	</div>
+
+	<div class="rsaiber">
+		{% for info in info %}
+			<h3>{{ info.name }}</h3>
+			<p>{{ info.main_text|linebreaksbr }}</p>
+			<address>{{ info.text }}</address>
+		{% endfor %}
+	</div>
+
+	<div class="content">
+			{% for blog in blog %}
+				<div class="text_content">
+					<h2>{{ blog.name_blog }}</h2>
+
+					<p>{{ blog.text_blog|linebreaksbr }}</p>
+
+					<address>{{ blog.time }}</address>
+				</div>
+			{% endfor %}
+	</div>
+
+	<footer>футер</footer>
+
+</body>
+</html>
