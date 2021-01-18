@@ -9,7 +9,8 @@
 </head>
 <body>
 	<div class="header">
-		<h1>меню __</h1>
+		{% block content %}
+		{% endblock %}
 	</div>
 
 	<div class="lsaiber">
@@ -20,23 +21,11 @@
 	</div>
 
 	<div class="rsaiber">
-		{% for info in info %}
-			<h3>{{ info.name }}</h3>
-			<p>{{ info.main_text|linebreaksbr }}</p>
-			<address>{{ info.text }}</address>
-		{% endfor %}
+		{% block rsaidber %}{% endblock %}
 	</div>
 
 	<div class="content">
-			{% for blog in blog %}
-				<div class="text_content">
-					<h2>{{ blog.name_blog }}</h2>
-
-					<p>{{ blog.text_blog|linebreaksbr }}</p>
-
-					<address>{{ blog.time }}</address>
-				</div>
-			{% endfor %}
+		{% block lsaidber %}{% endblock %}
 	</div>
 
 	<footer class="footer"><address>футер</address></footer>

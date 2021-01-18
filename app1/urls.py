@@ -1,6 +1,8 @@
 from django.urls import path
-from .views import blog
+from django.conf.urls import url
+from .views import blog, addlike
 
 urlpatterns = [
-	path(r'', blog, name='blog'),
+	path(r'blog/like/<int:pk>', addlike, name='like_blog'),
+	url(r'blog/', blog, name='blog'),
 ]
