@@ -4,15 +4,21 @@ from django.views.generic import TemplateView
 from django.urls import reverse
 from .models import Blog, Info
 
-# def base(request):
-#     return render_to_response('base.html')
+
+def blog_page(request, blog_id):
+    context = {
+        'blog': Blog.objects.get(id=blog_id)
+    }
+    return render(request, "Blog_detail.html", context)
 
 def blog(request):
 	blog = Blog.objects.all()
 	info = Info.objects.all()
 	return render(request, 'base.html', {'blog' : blog, 'info' : info})
 
-def addlike(request, pk):
-	blog = get_object_or_404(Blog, id=request.POST.get('blog_id'))
-	blog.like.add(request.user)
-	return HttpResponseRedirect(reverse('like_blog', args=[str(pk)]))
+def addlike(request, blog_id):
+   blog = get_object_or_404(Blog, id=blog_id)  # возвращает id статьи или 404.
+   blog.like += 1 # Прибавляет единицу к article_likes
+   blog.save() # сохраняет
+   return HttpResponseRedirect('/blog')
+

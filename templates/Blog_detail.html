@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+
+	<title>Document</title>
+</head>
+<body>
+	<div class="header">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+	<div class="lsaiber">
+		<p><a href="">link</a></p>
+		<p><a href="">link</a></p>
+		<p><a href="">kink</a></p>
+		<p><a href="">link</a></p>
+	</div>
+
+	<div class="rsaiber">
+		{% block rsaidber %}{% endblock %}
+	</div>
+
+	<div class="content">
+		<div class="text_content">
+			<h2>{{ blog.name_blog }}</h2>
+			<p>{{ blog.text_blog|linebreaksbr }}</p>
+			<address>{{ blog.time }}</address>
+			<form action="{% url 'like_blog' blog.pk %}" method="POST">
+				{% csrf_token %}
+				<button type="submit" name="blog_id" value="{{ blog.id }}">like: {{ blog.like }}</button>
+			</form>
+		</div>
+	</div>
+
+	<footer class="footer"><address>футер</address></footer>
+</body>
+</html>

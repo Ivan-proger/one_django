@@ -17,15 +17,18 @@
 {% block lsaidber %}
 
 {% for blog in blog %}
-	<div class="text_content">
-		<h2>{{ blog.name_blog }}</h2>
-		<p>{{ blog.text_blog|linebreaksbr }}</p>
-		<address>{{ blog.time }}</address>
-		<form action="{% url 'like_blog' blog.pk %}" method="POST">
-			{% csrf_token %}
-			<button type="submit" name="blog_id" value="{{ blog.id }}">like</button>
-		</form>
-	</div>
+	<a href="/blog/{{ blog.id }}">
+		<div class="text_content">
+			<h2>{{ blog.name_blog }}</h2>
+			<p>{{ blog.text_blog|linebreaksbr }}</p>
+			<address>{{ blog.time }}</address>
+			<form action="{% url 'like_blog' blog.pk %}" method="POST">
+				{% csrf_token %}
+				<button type="submit" name="blog_id" value="{{ blog.id }}">like: {{ blog.like }}</button>
+			</form>
+		</div>
+	</a>	
 {% endfor %}
 
 {% endblock %}
+

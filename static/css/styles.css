@@ -1,3 +1,8 @@
+a {
+	text-decoration: none;
+	color: black;
+}
+
 .header{
 	text-align: center;
 	padding: 90px; 
@@ -45,7 +50,7 @@
 .rsaiber{
 	overflow-x:hidden;
 	margin: 10px;
-	border-left: 2px dashed #fdffbc;
+	border-left: 2px dashed #323232;
 	font-size: 20px;
 	height: auto;
 	width: 150px;

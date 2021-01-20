@@ -6,7 +6,7 @@ class Blog(models.Model):
 	name_blog = models.CharField('название', max_length=200)
 	text_blog = models.TextField('текст поста')
 	time = models.DateTimeField('дата')
-	like = models.ManyToManyField(User, related_name='likes', blank=True)
+	like = models.IntegerField(default='0')
 
 	def __str__(self):
 		return self.name_blog
