@@ -24,7 +24,7 @@
 			<address>{{ blog.time }}</address>
 			<form action="{% url 'like_blog' blog.pk %}" method="POST">
 				{% csrf_token %}
-				<button type="submit" name="blog_id" value="{{ blog.id }}">like: {{ blog.like }}</button>
+				<button type="submit" name="blog_id" value="{{ blog.id }}">❤{{ blog.like }}</button>
 			</form>
 		</div>
 	</a>	
